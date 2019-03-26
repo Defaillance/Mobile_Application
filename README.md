@@ -18,11 +18,11 @@ https://github.com/LudoCarlu/Pokemon.git
 
 ## Problémes rencontrés
 
-On peut voir une grosse différence entre le deuxième et le troisième commit au niveau du code ar après plusieurs test, j'ai pu remarquer 
+- On peut voir une grosse différence entre le deuxième et le troisième commit au niveau du code ar après plusieurs test, j'ai pu remarquer 
 que je ne pouvais réaliser un click pour passer au second écran ainsi j'ai été aider pour modifier le code afin de réaliser un click 
 convenable
 
-Le principal problème vient de l'api car au niveau du code le lien entre le premier écran et le deuxième écran est censé être "clean"
+- Le principal problème vient de l'api car au niveau du code le lien entre le premier écran et le deuxième écran est censé être "clean"
 seulement si on test l'appli rien ne s'affiche sur le deuxième écran alors que de mon point de vue tout semble normal, ce qui nous donne
 un problème d'affichage.
 
