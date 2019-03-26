@@ -4,7 +4,9 @@ import com.example.mobile_application.model.Movie;
 
 import java.util.List;
 
+
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
+    private final MainActivity activity;
     private List<Movie> listValues;
 
     public class CelluleJava extends RecyclerView.ViewHolder {
@@ -31,32 +34,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Movie> listValues) {
+    public MyAdapter(List<Movie> listValues, MainActivity a) {
         this.listValues = listValues;
+        this.activity = a;
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public CelluleJava onCreateViewHolder(ViewGroup parent,
                                           int viewType) {
-        // create a new view
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.row_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
         CelluleJava vh = new CelluleJava(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(CelluleJava holder, final int position) {
         Movie currentMovie = listValues.get(position);
         final String title = currentMovie.getTitle();
         final String director = currentMovie.getDirector();
         final Integer release_date = currentMovie.getRelease_date();
+        Log.d("TAGG", "dazdaz"+currentMovie.getId());
+        holder.txtHeader.setTag(currentMovie.getId());
         holder.txtHeader.setText(title);
-        holder.txtFooter.setText(release_date);
+        holder.txtHeader.setOnClickListener(activity);
+        holder.txtFooter.setText(release_date+"");
     }
 
     @Override

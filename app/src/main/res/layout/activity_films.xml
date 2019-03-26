@@ -1,42 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
-        android:id="@+id/firstLine"
+        android:id="@+id/Title"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/secondLine"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="53dp"
         android:layout_alignWithParentIfMissing="true"
+        android:layout_above="@id/secondLine"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="116dp" />
+
     <TextView
-        android:id="@+id/firstLine"
+        android:id="@+id/Director"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/secondLine"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="28dp"
         android:layout_alignWithParentIfMissing="true"
+        android:layout_above="@id/secondLine"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="327dp" />
+
     <TextView
-        android:id="@+id/firstLine"
+        android:id="@+id/Release_Date"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/secondLine"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="44dp"
         android:layout_alignWithParentIfMissing="true"
+        android:layout_above="@id/secondLine"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="507dp" />
 
 </android.support.constraint.ConstraintLayout>

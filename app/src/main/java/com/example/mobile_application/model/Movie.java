@@ -4,7 +4,13 @@ public class Movie {
     private String title;
     private String director;
     private Integer release_date;
+    private String id;
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() { return  id; }
     public String getTitle() {
         return title;
     }

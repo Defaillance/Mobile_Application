@@ -7,6 +7,7 @@ import com.example.mobile_application.model.Movie;
 import com.example.mobile_application.model.RestMovieResponse;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +24,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -39,13 +40,23 @@ public class MainActivity extends Activity {
         controller = new MainController(this);
         controller.onStart();
 
-
+    }
 
     public void showList(List<Movie> input){
+        Log.d("YOYO", ""+input);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new MyAdapter(input);
+        mAdapter = new MyAdapter(input, this);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Log.d("LOGG", "yoyoyooy");
+        Intent intentMain = new Intent(MainActivity.this ,
+                Detail.class);
+        intentMain.putExtra("id",(String) v.getTag());
+        MainActivity.this.startActivity(intentMain);
     }
 }

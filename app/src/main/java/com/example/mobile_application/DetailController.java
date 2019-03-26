@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import com.example.mobile_application.model.Movie;
-import com.example.mobile_application.model.Movie;
+import com.example.mobile_application.model.RestMovieResponse;
 
 import android.util.Log;
 
@@ -17,13 +17,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainController {
+public class DetailController {
 
-    private MainActivity activity;
+    private final String id;
+    private Detail activity;
 
     private RestMovieApi restMovieApi;
 
-    public MainController(MainActivity mainActivity) {
+    public DetailController(Detail mainActivity, String id) {
+        this.id = id;
         this.activity = mainActivity;
     }
 
@@ -40,24 +42,26 @@ public class MainController {
                 .build();
 
         restMovieApi = retrofit.create(RestMovieApi.class);
-
         makeApiCall();
+
     }
 
     private void makeApiCall() {
-        Call<List<Movie>> call = restMovieApi.getListMovie();
-        call.enqueue(new Callback<List<Movie>>() {
+        Call<Movie> call = restMovieApi.getMovie(id);
+        call.enqueue(new Callback<Movie>() {
             @Override
-            public void onResponse(Call<List<Movie>> call,
-                                   Response<List<Movie>> response) {
-                List<Movie> restMovieResponse = response.body();
-                activity.showList(restMovieResponse);
+            public void onResponse(Call<Movie> call,
+                                   Response<Movie> response) {
+                Movie restMovieResponse = response.body();
+                Log.d("TAGG", response.code()+"");
+
+                //activity.showMovie(restMovieResponse.getTitle(),restMovieResponse.getDirector(),restMovieResponse.getRelease_date());
             }
 
             @Override
-            public void onFailure(Call<List<Movie>> call, Throwable t) {
+            public void onFailure(Call<Movie> call, Throwable t) {
                 Log.d("ERROR", "Api Error");
-                t.printStackTrace();
+
             }
         });
     }
