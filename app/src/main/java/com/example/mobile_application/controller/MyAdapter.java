@@ -1,5 +1,7 @@
-package com.example.mobile_application;
+package com.example.mobile_application.controller;
 
+import com.example.mobile_application.vue.MainActivity;
+import com.example.mobile_application.R;
 import com.example.mobile_application.model.Movie;
 
 import java.util.List;
@@ -9,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -59,6 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
         holder.txtHeader.setText(title);
         holder.txtHeader.setOnClickListener(activity);
         holder.txtFooter.setText(release_date+"");
+
     }
 
     @Override

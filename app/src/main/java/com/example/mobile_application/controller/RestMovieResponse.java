@@ -1,4 +1,6 @@
-package com.example.mobile_application.model;
+package com.example.mobile_application.controller;
+
+import com.example.mobile_application.model.Movie;
 
 import java.util.List;
 

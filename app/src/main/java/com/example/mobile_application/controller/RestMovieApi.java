@@ -1,14 +1,12 @@
-package com.example.mobile_application;
+package com.example.mobile_application.controller;
 
 import com.example.mobile_application.model.Movie;
-import com.example.mobile_application.model.RestMovieResponse;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface RestMovieApi {
 

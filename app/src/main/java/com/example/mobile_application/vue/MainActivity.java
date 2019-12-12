@@ -1,28 +1,33 @@
-package com.example.mobile_application;
+package com.example.mobile_application.vue;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.example.mobile_application.R;
+import com.example.mobile_application.controller.MainController;
+import com.example.mobile_application.controller.MyAdapter;
+
 
 import com.example.mobile_application.model.Movie;
-import com.example.mobile_application.model.RestMovieResponse;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import com.example.mobile_application.controller.MyAdapter;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private RecyclerView recyclerView;
@@ -31,6 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private MainController controller;
 
+    ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +45,31 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         controller = new MainController(this);
         controller.onStart();
-
     }
+
+    public boolean onCreateOptionMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        MenuItem item = menu.findItem(R.id.menuRecherche);
+        SearchView searchView = (SearchView)item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
 
     public void showList(List<Movie> input){
         Log.d("YOYO", ""+input);

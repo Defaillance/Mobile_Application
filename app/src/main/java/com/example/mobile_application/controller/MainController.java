@@ -1,9 +1,9 @@
-package com.example.mobile_application;
+package com.example.mobile_application.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.example.mobile_application.vue.MainActivity;
 
-import com.example.mobile_application.model.Movie;
 import com.example.mobile_application.model.Movie;
 
 import android.util.Log;

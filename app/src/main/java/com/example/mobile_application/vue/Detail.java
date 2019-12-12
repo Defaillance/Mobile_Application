@@ -1,9 +1,12 @@
-package com.example.mobile_application;
+package com.example.mobile_application.vue;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.mobile_application.R;
+import com.example.mobile_application.controller.DetailController;
 
 public class Detail extends Activity {
 
@@ -16,7 +19,7 @@ public class Detail extends Activity {
         Intent myIntent = getIntent();
         String id = myIntent.getStringExtra("id");
 
-        ma = new DetailController(this, id);
+        ma = new DetailController(this , id);
         ma.onStart();
 
     }

@@ -1,10 +1,10 @@
-package com.example.mobile_application;
+package com.example.mobile_application.controller;
 
+import com.example.mobile_application.vue.Detail;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import com.example.mobile_application.model.Movie;
-import com.example.mobile_application.model.RestMovieResponse;
 
 import android.util.Log;
 
