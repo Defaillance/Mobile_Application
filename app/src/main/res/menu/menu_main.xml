@@ -4,11 +4,21 @@
     tools:context="com.example.mobile_application.MainActivity">
     <item
         android:id="@+id/menuRecherche"
+        android:icon="@drawable/ic_search"
         android:title="Recherche"
-        android:icon="@android:drawable/ic_menu_search"
-        app:actionViewClass="android.widget.SearchView"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"
-        ></item>
+        />
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_favorites"
+        android:icon="@drawable/ic_favorite"
+        android:title="Favorites" />
 
 
 </menu>

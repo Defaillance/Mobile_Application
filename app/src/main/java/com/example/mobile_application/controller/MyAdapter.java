@@ -4,6 +4,7 @@ import com.example.mobile_application.vue.MainActivity;
 import com.example.mobile_application.R;
 import com.example.mobile_application.model.Movie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,20 +13,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> implements Filterable {
     private final MainActivity activity;
     private List<Movie> listValues;
+    private List<Movie> listValuesFull;
 
     public class CelluleJava extends RecyclerView.ViewHolder {
         public TextView txtHeader;
         public TextView txtFooter;
         public ImageView image;
         public View layout;
-
         public CelluleJava(View v) {
             super(v);
             layout = v;
@@ -38,6 +41,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
     public MyAdapter(List<Movie> listValues, MainActivity a) {
         this.listValues = listValues;
         this.activity = a;
+        listValuesFull = new ArrayList<>(listValues);
     }
 
     @Override
@@ -68,4 +72,43 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
         return listValues.size();
     }
 
+
+    @Override
+    public Filter getFilter() {
+        return valuesFilter;
+    }
+
+    private Filter valuesFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Movie> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() ==0){
+                filteredList.addAll(listValuesFull);
+
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for(Movie item : listValuesFull){
+                    if (item.getTitle().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            listValues.clear();
+            listValues.addAll((List) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 }
+
